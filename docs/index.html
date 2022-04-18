@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="TriCoLo: Trimodal Contrastive Loss for fine-grained Text to Shape Retrieval">
+    <meta name="author" content="Yue Ruan,
+                                 Han-Hung Lee,
+                                 Ke Zhang,
+                                 Angel Chang">
+
+    <title>TriCoLo: Trimodal Contrastive Loss for fine-grained Text to Shape Retrieval</title>
+    <!-- Bootstrap core CSS -->
+    <!--link href="bootstrap.min.css" rel="stylesheet"-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+    <!--    <link rel="icon" href="img/favicon.gif" type="image/gif">-->
+
+    <!-- Loads <model-viewer> for modern browsers: -->
+    <script type="module"
+            src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
+    </script>
+</head>
+
+<body>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container"></div>
+    <h2>TriCoLo: Trimodal Contrastive Loss for fine-grained Text to Shape Retrieval</h2>
+    <!-- <h2>CVPR 2022</h2> -->
+    <hr>
+    <p class="authors">
+        <a href="https://www.linkedin.com/in/yue-ruan-127a9a15b/"> Yue Ruan*</a>, 
+        <a href="https://hanhung.github.io/"> Han-Hung Lee*</a>,
+        <a href="https://ca.linkedin.com/in/ke-zhang-104ab4117"> Ke Zhang</a>,
+        <a href="https://angelxuanchang.github.io/"> Angel X. Chang</a>
+    </p>
+    <div class="btn-group" role="group" aria-label="Top menu">
+        <a class="btn btn-primary" href="https://github.com/3dlg-hcvc/tricolo">Code</a> <!-- TODO: -->
+        <a class="btn btn-primary" href="https://3dlg-hcvc.github.io/tricolo/">Paper</a> <!-- TODO: -->
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <img src="img/teaser.png" style="width:100%; margin-right:-20px; margin-top:-10px;">
+                </video>
+            </div>
+        </div>
+        <hr>
+        <p>
+            Recent work on contrastive losses for learning joint embeddings over multi-modal data has been successful at downstream tasks such as retrieval and classification.
+            On the other hand, work on joint representation learning for 3D shapes and text has thus far mostly focused on improving embeddings through modeling of complex attention between representations, or multi-task learning.
+            We show that with large batch contrastive learning we achieve SoTA on text-shape retrieval without complex attention mechanisms or losses.
+            Prior work in 3D and text representations has also focused on bimodal representation learning using either voxels or multi-view images with text.
+            To this end, we propose a trimodal learning scheme to achieve even higher performance and better representations for all modalities.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Video</h2>
+		<hr>
+		<div class="vcontainer">
+			<iframe class="video" src="https://www.youtube.com/embed/BLV33vqykM4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
+    </div>
+
+    <div class="section">
+	    <h2>Overview</h2>
+		<hr>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+					<img src="img/overview.png" style="width:100%; margin-right:-20px; margin-top:-10px;">
+            </div>
+        </div>
+        <hr>
+        <p>
+        For each modality, we define an encoder that takes the input and outputs an encoding.  
+        The text encoder is a Bi-directional Gate Recurrent Unit (Bi-GRU) which takes a text description and outputs the embedding.
+        For voxels we use a 3D CNN model that takes a 3D input and outputs a voxel embedding.
+        Finally, the image encoder takes M views of the object through an MVCNN architecture with pretrained ResNet18 backbone to obtain the image representation.
+        Variants of our model include just two modalities(Bi) and all three modalities(Tri). For the bimodal models, we only consider text and image(I), or text and voxels(V).
+        For the trimodal models, we consider text, image and voxels(I+V).
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Paper</h2>
+        <hr>
+        <div>
+            <div class="list-group">
+                <a href="https://drive.google.com/file/d/1U8Glb3QsJoJ-tVOnV3g7x23kKsDZ9eEx/view?usp=sharing"
+                   class="list-group-item">
+                    <img src="img/paper_thumbnails.png" style="width:100%; margin-right:-20px; margin-top:-10px;">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Download</h2>
+        <hr>
+        <div>
+            <div class="download files">
+                <p>Coming Soon!</p>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="section">
+        <h2>Bibtex</h2>
+        <hr>
+        <div class="bibtexsection">
+            Coming Soon!
+            
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Acknowledgements</h2>
+        <hr>
+        <div class="acknowledgements">
+            This work is funded by the Canada CIFAR AI Chair program and an NSERC Discovery Grant. 
+            This research was enabled in part by support provided by <a href="www.westgrid.ca">WestGrid</a> and <a href="www.computecanada.ca">Compute Canada</a>.
+            
+        </div>
+    </div>
+
+    <hr>
+
+    <footer>
+        <p>Send feedback and questions to <a href="mailto: yuer@sfu.ca">Yue Ruan</a>. Website template from <a href="https://www.vincentsitzmann.com/metasdf/">MetaSDF</a>. </p>
+    </footer>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

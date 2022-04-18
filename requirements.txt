@@ -1,0 +1,8 @@
+tqdm
+ftfy
+regex
+PyYAML
+pynrrd
+jsonlines
+opencv-python
+efficientnet_pytorch
