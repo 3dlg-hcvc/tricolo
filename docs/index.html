@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
-          content="TriCoLo: Trimodal Contrastive Loss for fine-grained Text to Shape Retrieval">
+          content="TriCoLo: Trimodal Contrastive Loss for Text to Shape Retrieval">
     <meta name="author" content="Yue Ruan,
                                  Han-Hung Lee,
+                                 Yiming Zhang,
                                  Ke Zhang,
                                  Angel Chang">
 
-    <title>TriCoLo: Trimodal Contrastive Loss for fine-grained Text to Shape Retrieval</title>
+    <title>TriCoLo: Trimodal Contrastive Loss for Text to Shape Retrieval</title>
     <!-- Bootstrap core CSS -->
     <!--link href="bootstrap.min.css" rel="stylesheet"-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -30,12 +31,13 @@
 <body>
 <div class="jumbotron jumbotron-fluid">
     <div class="container"></div>
-    <h2>TriCoLo: Trimodal Contrastive Loss for fine-grained Text to Shape Retrieval</h2>
+    <h2>TriCoLo: Trimodal Contrastive Loss for Text to Shape Retrieval</h2>
     <!-- <h2>CVPR 2022</h2> -->
     <hr>
     <p class="authors">
         <a href="https://www.linkedin.com/in/yue-ruan-127a9a15b/"> Yue Ruan*</a>, 
         <a href="https://hanhung.github.io/"> Han-Hung Lee*</a>,
+        <a href="https://github.com/eamonn-zh"> Yiming Zhang</a>,
         <a href="https://ca.linkedin.com/in/ke-zhang-104ab4117"> Ke Zhang</a>,
         <a href="https://angelxuanchang.github.io/"> Angel X. Chang</a>
     </p>
@@ -55,11 +57,7 @@
         </div>
         <hr>
         <p>
-            Recent work on contrastive losses for learning joint embeddings over multi-modal data has been successful at downstream tasks such as retrieval and classification.
-            On the other hand, work on joint representation learning for 3D shapes and text has thus far mostly focused on improving embeddings through modeling of complex attention between representations, or multi-task learning.
-            We show that with large batch contrastive learning we achieve SoTA on text-shape retrieval without complex attention mechanisms or losses.
-            Prior work in 3D and text representations has also focused on bimodal representation learning using either voxels or multi-view images with text.
-            To this end, we propose a trimodal learning scheme to achieve even higher performance and better representations for all modalities.
+            Text-to-shape retrieval is an increasingly relevant problem with the growth of 3D shape data. Recent work on contrastive losses for learning joint embeddings over multimodal data has been successful at tasks such as retrieval and classification. Thus far, work on joint representation learning for 3D shapes and text has focused on improving embeddings through modeling of complex attention between representations, or multi-task learning. We propose a trimodal learning scheme over text, multi-view images and 3D shape voxels, and show that with large batch contrastive learning we achieve good performance on text-to-shape retrieval without complex attention mechanisms or losses. Our experiments serve as a foundation for follow-up work on building trimodal embeddings for text-image-shape.
         </p>
     </div>
 
@@ -67,7 +65,7 @@
         <h2>Video</h2>
 		<hr>
 		<div class="vcontainer">
-			<iframe class="video" src="https://www.youtube.com/embed/BLV33vqykM4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<iframe class="video" src="https://youtu.be/4YK65qDUUJs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
     </div>
 
@@ -103,19 +101,18 @@
         </div>
     </div>
 
+    
     <div class="section">
         <h2>Bibtex</h2>
         <hr>
         <div class="bibtexsection">
-            @misc{ruan2022tricolo,
-                title={TriCoLo: Trimodal Contrastive Loss for Fine-grained Text to Shape Retrieval}, 
-                author={Yue Ruan and Han-Hung Lee and Ke Zhang and Angel X. Chang},
-                year={2022},
-                eprint={2201.07366},
-                archivePrefix={arXiv},
-                primaryClass={cs.CV}
-          }
-            
+    @inproceedings{ruan2024tricolo,
+        title={TriCoLo: Trimodal Contrastive Loss for Text To Shape Retrieval},
+        author={Ruan, Yue and Lee, Han-Hung and Zhang, Yiming and Zhang, Ke and Chang, Angel X},
+        booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision},
+        pages={5815--5825},
+        year={2024}
+    }
         </div>
     </div>
 
@@ -123,9 +120,7 @@
         <h2>Acknowledgements</h2>
         <hr>
         <div class="acknowledgements">
-            This work is funded by the Canada CIFAR AI Chair program and an NSERC Discovery Grant. 
-            This research was enabled in part by support provided by <a href="www.westgrid.ca">WestGrid</a> and <a href="www.computecanada.ca">Compute Canada</a>.
-            
+            This work is funded by the Canada CIFAR AI Chair program and an NSERC Discovery Grant, and a TUM-IAS Hans Fischer Fellowship (Focus Group Visual Computing). This research was enabled in part by support provided by <a href="www.westgrid.ca">WestGrid</a> and <a href="www.computecanada.ca">Compute Canada</a>. We thank <a href="https://daveredrum.github.io/">Dave Zhenyu Chen</a> for collecting the text descriptions for ShapeNet c13. We also thank the anonymous reviewers for their feedback, and Manolis Savva for proofreading and editing suggestions.
         </div>
     </div>
 

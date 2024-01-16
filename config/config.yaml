@@ -1,0 +1,110 @@
+# Managed by Hydra
+
+hydra:
+  output_subdir: null
+  run:
+    dir: .
+
+defaults:
+  - _self_
+  - data: base
+  - override hydra/hydra_logging: disabled
+  - override hydra/job_logging: disabled
+
+
+project_root_path: ${hydra:runtime.cwd}
+experiment_output_path: ${project_root_path}/output/${data.dataset}/${experiment_name}
+
+train_seed: 123
+test_seed: 321
+
+ckpt_name: null
+experiment_name: null
+
+logger:
+  _target_: lightning.pytorch.loggers.WandbLogger
+  project: TriCoLo
+  name: ${experiment_name}
+  save_dir: ${experiment_output_path}/training
+
+trainer:
+  _target_: lightning.pytorch.Trainer
+  accelerator: gpu
+  max_epochs: 20
+  profiler: simple
+  num_sanity_val_steps: 0
+  check_val_every_n_epoch: 2
+
+
+checkpoint_monitor:
+  _target_: lightning.pytorch.callbacks.ModelCheckpoint
+  monitor: val_eval/RR@5
+  mode: max
+  save_last: False
+  save_top_k: 3
+  every_n_epochs: ${trainer.check_val_every_n_epoch}
+  filename: "{epoch}"
+  dirpath: ${experiment_output_path}/training
+
+
+optimizer:
+    _target_: torch.optim.Adam
+    lr: 0.00035
+    weight_decay: 1e-6
+
+lr_decay:
+  start_epoch: 20
+
+model:
+  out_dim: 512
+  voxel_encoder: null
+  image_encoder: null
+  text_encoder: null
+
+  modules:
+    BiGRUEncoder:
+      _target_: tricolo.model.module.text_encoder.bigru.BiGRUEncoder
+      vocab_size: ${data.vocab_size}
+      out_dim: ${model.out_dim}
+
+    MVCNNEncoder:
+      _target_: tricolo.model.module.img_encoder.mv_cnn.MVCNNEncoder
+      z_dim: 512
+      cnn_name: resnet18
+      num_views: ${data.num_views}
+      out_dim: ${model.out_dim}
+
+    SparseCNNEncoder:
+      _target_: tricolo.model.module.voxel_encoder.sparse_cnn.SparseCNNEncoder
+      voxel_size: ${data.voxel_size}
+      ef_dim: 32
+      z_dim: 512
+      out_dim: ${model.out_dim}
+
+    clip_model: ViT-L/14
+
+    CLIPImageEncoder:
+      _target_: tricolo.model.module.img_encoder.clip_img.CLIPImageEncoder
+      out_dim: ${model.out_dim}
+      num_views: ${data.num_views}
+
+    CLIPTextEncoder:
+      _target_: tricolo.model.module.text_encoder.clip_text.CLIPTextEncoder
+      out_dim: ${model.out_dim}
+
+loss:
+  name: NTXentLoss
+  NTXentLoss:
+    _target_: tricolo.loss.nt_xent.NTXentLoss
+    temperature: 0.1
+    alpha_weight: 0.25
+
+  TripletLoss:
+    _target_: tricolo.loss.triplet.TripletLoss
+    margin: 0.025
+
+inference:
+  split: val
+  save_predictions: True
+  evaluate: True
+  output_dir: ${experiment_output_path}/inference/${inference.split}/predictions

@@ -1,0 +1,10 @@
+# Managed by Hydra
+
+dataset_root_path: ${project_root_path}/data
+
+batch_size: 128
+num_workers: 8
+
+image_size: 128
+voxel_size: 64
+num_views: 6

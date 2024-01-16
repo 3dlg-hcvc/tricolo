@@ -1,0 +1,18 @@
+# Managed by Hydra
+
+defaults:
+  - base
+
+dataset: Text2ShapeC13
+dataset_path: ${data.dataset_root_path}/text2shape-data/c13
+
+exp_data_root_path: ${data.dataset_path}/preprocessed/exp_data
+
+train_lang_data_path: ${data.dataset_path}/preprocessed/exp_data/train_map.json
+val_lang_data_path: ${data.dataset_path}/preprocessed/exp_data/val_map.json
+test_lang_data_path: ${data.dataset_path}/preprocessed/exp_data/test_map.json
+
+vocab_size: 3968
+
+ignored_models: []
+
