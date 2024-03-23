@@ -86,35 +86,7 @@ Download [ShapeNet](https://shapenet.org/), and place `ShapeNetCore.v2` in the `
    ```
 
 ### Text2Shape (C13)
-1. Coming Soon!
-
-2. Download [ShapeNet solid voxels (C13)]():
-   [Coming Soon!]
-
-   Finally, the dataset files should be organized as follows:
-   ```shell
-   tricolo
-   ├── data
-   │   ├── preprocess_all_data.py
-   │   ├── text2shape-data
-   │   │   ├── ShapeNetCore.v2
-   │   │   ├── chair_table
-   │   │   ├── c13
-   │   │   │   ├── nrrd_256_filter_div_32_solid
-   │   │   │   ├── nrrd_256_filter_div_64_solid
-   │   │   │   ├── nrrd_256_filter_div_128_solid
-   │   │   │   ├── c13.json
-   ```
-
-3. Preprocess the dataset
-   ```shell
-   python data/preprocess_all_data.py data=text2shape_c13 +cpu_workers={num_processes}
-   ```
-   
-4. Precache the CLIP embeddings (optional)
-   ```shell
-   python extract_clip_feats.py data=text2shape_c13 data.image_size=224
-   ```
+1. Download [Text2Shape C13](https://aspis.cmpt.sfu.ca/projects/tricolo/data/c13.csv).
 
 ## Training, Inference and Evaluation
 Note: Configuration files are managed by [Hydra](https://hydra.cc/), you can easily add or override any configuration attributes by passing them as arguments.
