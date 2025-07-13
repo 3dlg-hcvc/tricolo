@@ -85,8 +85,8 @@ Download [ShapeNet](https://shapenet.org/), and place `ShapeNetCore.v2` in the `
    python extract_clip_feats.py data=text2shape_chair_table data.image_size=224
    ```
 
-### Text2Shape (C13)
-1. Download [Text2Shape C13](https://aspis.cmpt.sfu.ca/projects/tricolo/data/c13.csv).
+### ShapeNet C13
+Please download the dataset from [ShapeNet-C13 Hugging Face](https://huggingface.co/datasets/3dlg-hcvc/ShapeNet-C13).
 
 ## Training, Inference and Evaluation
 Note: Configuration files are managed by [Hydra](https://hydra.cc/), you can easily add or override any configuration attributes by passing them as arguments.
